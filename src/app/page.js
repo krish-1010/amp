@@ -51,13 +51,36 @@ export default function Home() {
     relationshiptostudent: "",
     occupation: "",
     addressforcoresspondence: "",
+    challenge: "",
+    hearing: false,
+    ortho: false,
+    visual: false,
+    blind: "",
+    disable: "",
+    program: "",
+    comments: "",
+    cash: false,
+    cheque: false,
+    dd: false,
+    neft: false,
+    rtgs: false,
+    nach: false,
+    credit: false,
+    debit: false,
+    gpay: false,
+    phnpe: false,
+    otherpaymentmode: "",
+    feestatus: "",
+    partiallypaid: false,
+    fullypaid: false,
+    amountpaid: "",
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 

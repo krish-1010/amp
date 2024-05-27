@@ -75,7 +75,7 @@ const Step2 = ({ formData, handleChange }) => {
       <div>
         <div className="flex justify-between mb-4">
           <div className="flex flex-col gap-2">
-            <label for="parentname">Name of the Parent/ Guardian</label>
+            <label htmlFor="parentname">Name of the Parent/ Guardian</label>
             <input
               type="text"
               value={formData.parentname}
@@ -85,63 +85,175 @@ const Step2 = ({ formData, handleChange }) => {
               name="parentname"
             />
           </div>
-          {/*  */}
           <div className="flex flex-col gap-2">
-            <label for="relationshiptostudent">Relationship to the Student</label>
+            <label htmlFor="relationshiptostudent">Relationship to the Student</label>
             <input
               type="text"
               className="border border-black"
               id="relationshiptostudent"
               name="relationshiptostudent"
               value={formData.relationshiptostudent}
-            ></input>
+              onChange={handleChange}
+            />
           </div>
         </div>
 
-
         <div className="flex justify-between">
-          
-          {/*  */}
           <div className="flex flex-col gap-2">
-            <label for="occupation">Occupation</label>
+            <label htmlFor="occupation">Occupation</label>
             <input
               type="text"
               className="border border-black"
               id="occupation"
               name="occupation"
               value={formData.occupation}
-            ></input>
+              onChange={handleChange}
+            />
           </div>
         </div>
       </div>
       
-
       <div className="flex flex-col">
-      <label for="addressforcoresspondence" 
-             className="text-xl font-bold mb-3 mt-8">
-              Address for Correspondence
-      </label>
-      <textarea 
-                name="addressforcoresspondence" 
-                id="addressforcoresspondence" 
-                cols="160"
-                rows="4" 
-                className="border border-black"
-                value={formData.addressforcoresspondence}
-                onChange={handleChange}/>
+        <label htmlFor="addressforcoresspondence" className="text-xl font-bold mb-3 mt-8">
+          Address for Correspondence
+        </label>
+        <textarea 
+          name="addressforcoresspondence" 
+          id="addressforcoresspondence" 
+          cols="160"
+          rows="4" 
+          className="border border-black"
+          value={formData.addressforcoresspondence}
+          onChange={handleChange}
+        />
       </div>
 
-
-      <label for="personalhealthhistory :" 
-             className="text-xl font-bold mb-3 mt-8">
-              Personal Health History :
+      <label htmlFor="personalhealthhistory" className="text-xl font-bold mb-3 mt-8">
+        Personal Health History :
       </label>
-                
 
-                {/* hey chatgpt, here */}
-    
-    
-    
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-between items-center">
+          <label htmlFor="challenge" className="flex-1">
+            Are you Physically Challenged? (If Yes, Please Indicate)
+          </label>
+          <div className="flex-1 flex">
+            <label className="mr-4">
+              <input
+                type="radio"
+                id="yes1"
+                name="challenge"
+                value="yes"
+                checked={formData.challenge === "yes"}
+                onChange={handleChange}
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="no1"
+                name="challenge"
+                value="no"
+                checked={formData.challenge === "no"}
+                onChange={handleChange}
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <label className="flex-1">
+            <input
+              type="checkbox"
+              id="hearing"
+              name="hearing"
+              checked={formData.hearing}
+              onChange={handleChange}
+            />
+            Hearing
+          </label>
+          <label className="flex-1">
+            <input
+              type="checkbox"
+              id="ortho"
+              name="ortho"
+              checked={formData.ortho}
+              onChange={handleChange}
+            />
+            Orthopedic
+          </label>
+          <label className="flex-1">
+            <input
+              type="checkbox"
+              id="visual"
+              name="visual"
+              checked={formData.visual}
+              onChange={handleChange}
+            />
+            Visual
+          </label>
+        </div>
+        <div className="flex justify-between items-center">
+          <label htmlFor="blind" className="flex-1">
+            Do you have Color Blindness?
+          </label>
+          <div className="flex-1 flex">
+            <label className="mr-4">
+              <input
+                type="radio"
+                id="yes2"
+                name="blind"
+                value="yes"
+                checked={formData.blind === "yes"}
+                onChange={handleChange}
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="no2"
+                name="blind"
+                value="no"
+                checked={formData.blind === "no"}
+                onChange={handleChange}
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <label htmlFor="disable" className="flex-1">
+            Do you have Development (or) Learning Disability?
+          </label>
+          <div className="flex-1 flex">
+            <label className="mr-4">
+              <input
+                type="radio"
+                id="yes3"
+                name="disable"
+                value="yes"
+                checked={formData.disable === "yes"}
+                onChange={handleChange}
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="no3"
+                name="disable"
+                value="no"
+                checked={formData.disable === "no"}
+                onChange={handleChange}
+              />
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 };
