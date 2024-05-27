@@ -10,6 +10,56 @@ import Step5 from "./components/Step5";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    appno: "",
+    date: "",
+    fname: "",
+    sname: "",
+    lname: "",
+    gender: "",
+    presadd: "",
+    permadd: "",
+    mothertongue: "",
+    nationality: "",
+    dob: "",
+    bloodgroup: "",
+    aadhaar: "",
+    passport: "",
+    mobile: "",
+    email: "",
+    textbox11: "",
+    textbox12: "",
+    textbox13: "",
+    textbox14: "",
+    textbox15: "",
+    textbox21: "",
+    textbox22: "",
+    textbox23: "",
+    textbox24: "",
+    textbox25: "",
+    textbox31: "",
+    textbox32: "",
+    textbox33: "",
+    textbox34: "",
+    textbox35: "",
+    textbox41: "",
+    textbox42: "",
+    textbox43: "",
+    textbox44: "",
+    textbox45: "",
+    parentname: "",
+    relationshiptostudent: "",
+    occupation: "",
+    addressforcoresspondence: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 5));
@@ -21,6 +71,7 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     // Handle final form submission
   };
 
@@ -34,11 +85,21 @@ export default function Home() {
               <b>Application Form</b>
             </h1>
             <form onSubmit={handleSubmit} className="w-full">
-              {currentStep === 1 && <Step1 />}
-              {currentStep === 2 && <Step2 />}
-              {currentStep === 3 && <Step3 />}
-              {currentStep === 4 && <Step4 />}
-              {currentStep === 5 && <Step5 />}
+              {currentStep === 1 && (
+                <Step1 formData={formData} handleChange={handleChange} />
+              )}
+              {currentStep === 2 && (
+                <Step2 formData={formData} handleChange={handleChange} />
+              )}
+              {currentStep === 3 && (
+                <Step3 formData={formData} handleChange={handleChange} />
+              )}
+              {currentStep === 4 && (
+                <Step4 formData={formData} handleChange={handleChange} />
+              )}
+              {currentStep === 5 && (
+                <Step5 formData={formData} handleChange={handleChange} />
+              )}
 
               <div className="flex justify-between mt-4">
                 {currentStep > 1 && (
