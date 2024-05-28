@@ -71,19 +71,51 @@ export default function Home() {
     phnpe: false,
     otherpaymentmode: "",
     feestatus: "",
-    partiallypaid: false,
-    fullypaid: false,
+    paidstatus: "",
     amountpaid: "",
+    mobile: "",
+    email: "",
+    t11: "",
+    t12: "",
+    t13: "",
+    t21: "",
+    t22: "",
+    t23: "",
+    t31: "",
+    t32: "",
+    t33: "",
+    t41: "",
+    t42: "",
+    t43: "",
+    t51: "",
+    t52: "",
+    t53: "",
+    t61: "",
+    t62: "",
+    t63: "",
+    declarationplace: "",
+    declarationdate: "",
+    signApplicant: null,
+    signParent: null,
+    img: null,
   });
 
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked, files } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]:
+        type === "checkbox" ? checked : type === "file" ? files[0] : value,
     }));
   };
-
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 5));
   };
@@ -129,18 +161,45 @@ export default function Home() {
                   <button
                     type="button"
                     onClick={handlePrevious}
-                    className="btn"
+                    className="btn mt-4 mb-4 text-lg"
                   >
-                    Previous
+                    &laquo; Previous
                   </button>
                 )}
-                {currentStep < 5 && (
-                  <button type="button" onClick={handleNext} className="btn">
-                    Next
+                {currentStep == 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="btn ml-auto mr-auto text-lg"
+                  >
+                    Next &raquo;
+                  </button>
+                )}
+                {currentStep < 5 && currentStep != 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="btn mt-4 mb-4 text-lg"
+                  >
+                    Next &raquo;
                   </button>
                 )}
                 {currentStep === 5 && (
-                  <button type="submit" className="btn">
+                  <button
+                    type="submit"
+                    className="
+                    btn 
+                    border
+                    pl-2 
+                    pr-2 
+                    border-black 
+                    rounded-sm 
+                    mr-auto 
+                    ml-auto 
+                    text-xl 
+                    mt-4 
+                    mb-4"
+                  >
                     Submit
                   </button>
                 )}

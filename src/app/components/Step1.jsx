@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import Image from "next/image";
 
 const Step1 = ({ formData, handleChange }) => {
   return (
@@ -38,17 +39,29 @@ const Step1 = ({ formData, handleChange }) => {
           <div className="border border-black border-dotted w-[140px] h-[150px] flex justify-center items-center rounded-md">
             <input
               type="file"
-              id="upload"
+              id="img"
               className="w-full h-full"
+              name="img"
               accept="image/*"
+              onChange={handleChange}
               hidden
             />
-            <label
-              htmlFor="upload"
-              className="cursor-pointer pt-12 pb-12 text-center"
-            >
-              [upload Image]
-            </label>
+            {formData.img ? (
+              <Image
+                src={URL.createObjectURL(formData.img)}
+                alt="Uploaded"
+                width={50}
+                height={80}
+                className="w-full h-full object-cover rounded-md"
+              />
+            ) : (
+              <label
+                htmlFor="img"
+                className="cursor-pointer pt-12 pb-12 text-center"
+              >
+                [upload Image]
+              </label>
+            )}
           </div>
         </div>
       </div>
@@ -114,7 +127,7 @@ const Step1 = ({ formData, handleChange }) => {
               id="male"
               name="gender"
               value="male"
-              checked={formData.gender === 'male'}
+              checked={formData.gender === "male"}
               onChange={handleChange}
             />
             <label htmlFor="gender" className="ml-2">
@@ -127,7 +140,7 @@ const Step1 = ({ formData, handleChange }) => {
               id="female"
               name="gender"
               value="female"
-              checked={formData.gender === 'female'}
+              checked={formData.gender === "female"}
               onChange={handleChange}
             />
             <label htmlFor="gender" className="ml-2">
@@ -140,7 +153,7 @@ const Step1 = ({ formData, handleChange }) => {
               id="trans"
               name="gender"
               value="transgender"
-              checked={formData.gender === 'transgender'}
+              checked={formData.gender === "transgender"}
               onChange={handleChange}
             />
             <label htmlFor="gender" className="ml-2">
@@ -302,7 +315,6 @@ const Step1 = ({ formData, handleChange }) => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

@@ -71,7 +71,9 @@ const Step2 = ({ formData, handleChange }) => {
         </div>
       </div>
 
-      <h2 className="text-xl font-bold mb-4 mt-8">Parent / Guardian Information:</h2>
+      <h2 className="text-xl font-bold mb-4 mt-8">
+        Parent / Guardian Information:
+      </h2>
       <div>
         <div className="flex justify-between mb-4">
           <div className="flex flex-col gap-2">
@@ -86,7 +88,9 @@ const Step2 = ({ formData, handleChange }) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="relationshiptostudent">Relationship to the Student</label>
+            <label htmlFor="relationshiptostudent">
+              Relationship to the Student
+            </label>
             <input
               type="text"
               className="border border-black"
@@ -112,23 +116,56 @@ const Step2 = ({ formData, handleChange }) => {
           </div>
         </div>
       </div>
-      
+
       <div className="flex flex-col">
-        <label htmlFor="addressforcoresspondence" className="text-xl font-bold mb-3 mt-8">
+        <label
+          htmlFor="addressforcoresspondence"
+          className="text-xl font-bold mb-3 mt-8"
+        >
           Address for Correspondence
         </label>
-        <textarea 
-          name="addressforcoresspondence" 
-          id="addressforcoresspondence" 
+        <textarea
+          name="addressforcoresspondence"
+          id="addressforcoresspondence"
           cols="160"
-          rows="4" 
+          rows="4"
           className="border border-black"
           value={formData.addressforcoresspondence}
           onChange={handleChange}
         />
       </div>
 
-      <label htmlFor="personalhealthhistory" className="text-xl font-bold mb-3 mt-8">
+      <div className="flex justify-between mb-10 mt-8">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="mobile">Mobile</label>
+          <input
+            type="text"
+            value={formData.mobile}
+            onChange={handleChange}
+            className="border border-black"
+            id="mobile"
+            name="mobile"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            className="border border-black"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+
+      {/* TODO: add mobile and email */}
+
+      <label
+        htmlFor="personalhealthhistory"
+        className="text-xl font-bold mb-3 mt-8"
+      >
         Personal Health History :
       </label>
 
@@ -253,7 +290,6 @@ const Step2 = ({ formData, handleChange }) => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
