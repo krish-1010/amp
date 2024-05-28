@@ -93,10 +93,15 @@ export default function Home() {
     t61: "",
     t62: "",
     t63: "",
+    documents: "",
+    feereceipt: "",
     declarationplace: "",
     declarationdate: "",
     signApplicant: null,
     signParent: null,
+    documents: "", // New state for selected document type
+    documentFiles: {}, // New state to store files by document type
+    feereceipt: "", // State for fee receipt type
     img: null,
   });
 
