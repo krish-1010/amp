@@ -115,12 +115,33 @@ export default function Home() {
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]:
-        type === "checkbox" ? checked : type === "file" ? files[0] : value,
-    }));
+
+    if (type === "file" && name === "documentFile") {
+      const documentType = formData.documents;
+      if (documentType) {
+        setFormData((prevData) => ({
+          ...prevData,
+          documentFiles: {
+            ...prevData.documentFiles,
+            [documentType]: files[0],
+          },
+        }));
+      }
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]:
+          type === "checkbox" ? checked : type === "file" ? files[0] : value,
+        ...(name === "documents" && {
+          documentFiles: { ...prevData.documentFiles, [value]: null },
+        }),
+        ...(name === "feereceipt" && {
+          feereceiptFiles: { ...prevData.feereceiptFiles, [value]: null },
+        }),
+      }));
+    }
   };
+
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 5));
   };

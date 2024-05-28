@@ -94,108 +94,138 @@ export default function Step5({ formData, handleChange }) {
         </p>
       </div>
 
-      <div className="border border-black flex flex-col items-center p-2 pl-3 pr-3">
-        <h2 className="font-bold mb-2">FOR OFFICE USE:</h2>
-        <div className="flex w-full mt-5 mb-4">
-          <h2 className="font-bold mb-2 ">DOCUMENTS:</h2>
-          <div className="flex w-full justify-evenly">
-            {/* s */}
-            <div>
-              <input
-                type="radio"
-                name="documents"
-                id="Marksheet"
-                value="Marksheet"
-                checked={formData.documents === "Marksheet"}
-                onChange={handleChange}
-              />
-              <label htmlFor="Marksheet">Marksheet</label>
+      <div>
+        <div className="border border-black flex flex-col items-center p-2 pl-3 pr-3">
+          <h2 className="font-bold mb-2">FOR OFFICE USE:</h2>
+          <div className="flex w-full mt-5 mb-4">
+            <h2 className="font-bold mb-2">DOCUMENTS:</h2>
+            <div className="flex w-full justify-evenly">
+              <div>
+                <input
+                  type="radio"
+                  name="documents"
+                  id="Marksheet"
+                  value="Marksheet"
+                  checked={formData.documents === "Marksheet"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Marksheet">Marksheet</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="documents"
+                  id="Certificate"
+                  value="Certificate"
+                  checked={formData.documents === "Certificate"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Certificate">Certificate</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="documents"
+                  id="Aadhaar"
+                  value="Aadhaar"
+                  checked={formData.documents === "Aadhaar"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Aadhaar">Aadhaar</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="documents"
+                  id="PAN"
+                  value="PAN"
+                  checked={formData.documents === "PAN"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="PAN">PAN</label>
+              </div>
             </div>
-            {/* e */}
-            {/* s */}
-            <div>
-              <input
-                type="radio"
-                name="documents"
-                id="Certificate"
-                value="Certificate"
-                checked={formData.documents === "Certificate"}
-                onChange={handleChange}
-              />
-              <label htmlFor="Certificate">Certificate</label>
-            </div>
-            {/* e */}
-            {/* s */}
-            <div>
-              <input
-                type="radio"
-                name="documents"
-                id="Aadhaar"
-                value="Aadhaar"
-                checked={formData.documents === "Aadhaar"}
-                onChange={handleChange}
-              />
-              <label htmlFor="Aadhaar">Aadhaar</label>
-            </div>
-            {/* e */}
-            {/* s */}
-            <div>
-              <input
-                type="radio"
-                name="documents"
-                id="PAN"
-                value="PAN"
-                checked={formData.documents === "PAN"}
-                onChange={handleChange}
-              />
-              <label htmlFor="PAN">PAN</label>
-            </div>
-            {/* e */}
           </div>
-        </div>
-        {/*  */}
-        <div className="flex w-full mt-5 mb-4">
-          <h2 className="font-bold w-36 mb-2 ">FEE RECEIPT:</h2>
-          <div className="flex w-full justify-evenly">
-            {/* s */}
-            <div>
+
+          {formData.documents && (
+            <div className="flex w-full mt-5 mb-4">
               <input
-                type="radio"
-                name="feereceipt"
-                id="Registration"
-                value="Registration"
-                checked={formData.feereceipt === "Registration"}
+                type="file"
+                name="documentFile"
                 onChange={handleChange}
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
               />
-              <label htmlFor="Registration">Registration</label>
             </div>
-            {/* e */}
-            {/* s */}
-            <div>
+          )}
+
+          <div className="mt-4">
+            {formData.documents &&
+              formData.documentFiles[formData.documents] && (
+                <div>
+                  <h4 className="font-bold">{formData.documents}</h4>
+                  <p>{formData.documentFiles[formData.documents].name}</p>
+                </div>
+              )}
+          </div>
+
+          <div className="flex w-full mt-5 mb-4">
+            <h2 className="font-bold w-36 mb-2">FEE RECEIPT:</h2>
+            <div className="flex w-full justify-evenly">
+              <div>
+                <input
+                  type="radio"
+                  name="feereceipt"
+                  id="Registration"
+                  value="Registration"
+                  checked={formData.feereceipt === "Registration"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Registration">Registration</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="feereceipt"
+                  id="Admission Fee"
+                  value="Admission Fee"
+                  checked={formData.feereceipt === "Admission Fee"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Admission Fee">Admission Fee</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="feereceipt"
+                  id="Installment"
+                  value="Installment"
+                  checked={formData.feereceipt === "Installment"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="Installment">Installment</label>
+              </div>
+            </div>
+          </div>
+
+          {formData.feereceipt && (
+            <div className="flex w-full mt-5 mb-4">
               <input
-                type="radio"
-                name="feereceipt"
-                id="Admission Fee"
-                value="Admission Fee"
-                checked={formData.feereceipt === "Admission Fee"}
+                type="file"
+                name="feereceiptFile"
                 onChange={handleChange}
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
               />
-              <label htmlFor="Admission Fee">Admission Fee</label>
             </div>
-            {/* e */}
-            {/* s */}
-            <div>
-              <input
-                type="radio"
-                name="feereceipt"
-                id="Installment"
-                value="Installment"
-                checked={formData.feereceipt === "Installment"}
-                onChange={handleChange}
-              />
-              <label htmlFor="Installment">Installment</label>
-            </div>
-            {/* e */}
+          )}
+
+          <div className="mt-4">
+            {formData.feereceipt &&
+              formData.feereceiptFiles[formData.feereceipt] && (
+                <div>
+                  <h4 className="font-bold">{formData.feereceipt}</h4>
+                  <p>{formData.feereceiptFiles[formData.feereceipt].name}</p>
+                </div>
+              )}
           </div>
         </div>
       </div>
