@@ -53,6 +53,9 @@ const Step1 = ({ formData, handleChange }) => {
                 width={50}
                 height={80}
                 className="w-full h-full object-cover rounded-md"
+                onClick={() => {
+                  document.getElementById("img").click();
+                }}
               />
             ) : (
               <label
@@ -69,7 +72,6 @@ const Step1 = ({ formData, handleChange }) => {
       <h2 className="font-bold mt-4 mb-8">
         Student Information: ( Name and Details as given in official records)
       </h2>
-
       <div className="flex justify-between flex-wrap">
         <div className="">
           <label htmlFor="fname" className="">
